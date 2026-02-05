@@ -31,11 +31,13 @@ Eine professionelle Android Kiosk-Browser-Lösung für kommerzielle Displays, In
 ## 📋 Voraussetzungen
 
 - **Android Version**: Minimum SDK 26 (Android 8.0), Target SDK 36
+- **Device Owner**: **Erforderlich** für vollständigen Kiosk-Modus (Lock Task)
 - **Berechtigungen**: 
   - `INTERNET` - Für WebView
   - `RECEIVE_BOOT_COMPLETED` - Für Auto-Start
 - **Optional**: Root-Zugriff für erweiterte Sicherheitsfunktionen
-- **Empfohlen**: Device Owner Setup für vollständigen Kiosk-Modus
+
+⚠️ **Wichtig**: Ohne Device Owner funktionieren wichtige Kiosk-Features (Lock Task Mode, Tastensperre) nicht vollständig!
 
 ## 🚀 Installation
 
@@ -55,18 +57,34 @@ Die APK finden Sie unter: `app/build/outputs/apk/debug/app-debug.apk`
 adb install app/build/outputs/apk/debug/app-debug.apk
 ```
 
-### 3. Device Owner einrichten (Optional aber empfohlen)
+### 3. Device Owner einrichten (ERFORDERLICH)
 
-**WICHTIG**: Dies muss auf einem frisch zurückgesetzten Gerät ohne Google-Konto erfolgen!
+**⚠️ WICHTIG**: Muss auf einem **Factory-Reset Gerät OHNE Google-Konto** erfolgen!
 
+#### Schritt-für-Schritt:
+
+1. **Gerät zurücksetzen** (falls bereits eingerichtet):
+   - Einstellungen → System → Zurücksetzen → Werkseinstellungen
+   
+2. **Setup OHNE Google-Konto durchführen**:
+   - WLAN verbinden
+   - Alle Google-Anmeldungen überspringen
+   - Setup abschließen
+
+3. **App installieren** (siehe oben)
+
+4. **Device Owner setzen**:
 ```bash
 adb shell dpm set-device-owner com.crownsmedia.kioskbrowser/.MyDeviceAdminReceiver
 ```
 
-Überprüfung:
+5. **Überprüfen**:
 ```bash
-adb shell dumpsys device_policy | grep mDeviceOwner
+adb shell dumpsys device_policy | grep "Device Owner"
+# Sollte zeigen: mDeviceOwner=AdminInfo...
 ```
+
+✅ **Fertig!** Die App hat jetzt volle Kiosk-Kontrolle.
 
 ## ⚙️ Konfiguration
 
@@ -190,25 +208,39 @@ server/
 
 ## 🔐 Sicherheitshinweise
 
-### Was die App schützt:
-✅ Verlassen der App (Lock Task Mode)  
-✅ Screenshots (bei Root-Zugriff)  
-✅ Zugriff auf andere Apps  
-✅ Unbefugte URL-Aufrufe  
-✅ Downloads und Uploads  
-✅ System-Tasten (Volume, Power, etc.)  
+### Mit Device Owner (EMPFOHLEN):
+✅ Vollständiger Kiosk-Modus (Lock Task)  
+✅ App kann nicht verlassen werden  
+✅ Zugriff auf andere Apps blockiert  
+✅ System-Tasten blockiert  
+✅ Unbefugte URL-Aufrufe verhindert  
+✅ Downloads und Uploads deaktiviert  
+✅ Auto-Start nach Boot  
+
+### Ohne Device Owner (EINGESCHRÄNKT):
+⚠️ Benutzer kann über Recents-Taste (⎕) wechseln  
+⚠️ Lock Task Mode nicht verfügbar  
+✅ URL-Filterung funktioniert  
+✅ PIN-Schutz funktioniert  
+✅ Screenshot-Blockierung (bei Root)  
+
+### Zusätzlich mit Root:
+✅ Screenshots werden komplett blockiert (nicht nur gelöscht)  
+✅ Navigationsleiste versteckt  
+✅ Screenshot-Ordner schreibgeschützt  
 
 ### Einschränkungen:
-- **Ohne Device Owner**: Benutzer kann über Recents-Taste (⎕) wechseln
-- **Ohne Root**: Screenshots können technisch erstellt werden (werden aber gelöscht)
-- **Factory Reset**: Setzt alle Einstellungen zurück
+- **Factory Reset**: Setzt alle Einstellungen zurück (Device Owner geht verloren)
+- **Physischer Zugriff**: Sollte zu Power/Volume-Buttons beschränkt werden
 
 ### Best Practices:
-1. Immer Device Owner einrichten auf frischem Gerät
-2. PIN sofort nach Installation ändern
-3. Physischen Zugriff zu Buttons beschränken
-4. Regelmäßig Remote-Einstellungen überprüfen
-5. Server-Konfiguration über HTTPS bereitstellen
+1. **IMMER** Device Owner auf frischem Gerät einrichten (Factory Reset)
+2. Device Owner **VOR** Google-Konto setzen
+3. PIN sofort nach Installation ändern (Standard: `12345`)
+4. Physischen Zugriff zu Buttons beschränken (Kiosk-Gehäuse verwenden)
+5. Regelmäßig Remote-Einstellungen überprüfen
+6. Server-Konfiguration über HTTPS bereitstellen
+7. Bei wichtigen Deployments: Root-Zugriff für maximale Sicherheit
 
 ## 🛠️ Entwicklung
 
@@ -245,13 +277,21 @@ server/
 - Lösung: `adb shell dumpsys package com.crownsmedia.kioskbrowser` prüfen
 
 ### Device Owner kann nicht gesetzt werden
-- **Fehler**: "Nicht auf diesem Gerät erlaubt"
-- **Ursache**: Google-Konto bereits eingerichtet
-- **Lösung**: Factory Reset, Device Owner VOR Google-Konto-Anmeldung setzen
+- **Fehler**: "Not allowed on this device" oder "already has an owner"
+- **Ursache**: 
+  - ❌ Google-Konto bereits angemeldet
+  - ❌ Anderes MDM/Device Owner aktiv
+  - ❌ Gerät ist Work Profile
+- **Lösung**: 
+  1. **Factory Reset** durchführen
+  2. Setup **OHNE** Google-Konto
+  3. Device Owner **VOR** jeglicher Google-Anmeldung setzen
+  4. Keine anderen Device Admin Apps installieren
 
 ### Lock Task Mode funktioniert nicht
-- **Ursache**: Kein Device Owner
-- **Lösung**: Device Owner wie oben beschrieben einrichten
+- **Ursache**: Kein Device Owner gesetzt
+- **Symptom**: Nutzer kann über Recents-Taste (⎕) die App verlassen
+- **Lösung**: Device Owner wie oben beschrieben einrichten (siehe Schritt 3)
 
 ### Screenshots werden nicht blockiert
 - **Ursache**: Kein Root-Zugriff
