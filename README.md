@@ -30,7 +30,7 @@ Eine professionelle Android Kiosk-Browser-Lösung für kommerzielle Displays, In
 
 ## 📋 Voraussetzungen
 
-- **Android Version**: Minimum SDK 28 (Android 9.0), Target SDK 36
+- **Android Version**: Minimum SDK 26 (Android 8.0), Target SDK 36
 - **Berechtigungen**: 
   - `INTERNET` - Für WebView
   - `RECEIVE_BOOT_COMPLETED` - Für Auto-Start
