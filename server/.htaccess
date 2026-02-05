@@ -1,0 +1,15 @@
+# Zugriff auf settings.json von extern erlauben (für Android App)
+<Files "settings.json">
+    Require all granted
+</Files>
+
+# PHP Einstellungen
+<IfModule mod_php.c>
+    php_flag display_errors off
+    php_value max_execution_time 30
+</IfModule>
+
+# Caching deaktivieren für Entwicklung
+<IfModule mod_headers.c>
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+</IfModule>

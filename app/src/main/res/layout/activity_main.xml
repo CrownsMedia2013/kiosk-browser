@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <WebView
+        android:id="@+id/webView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <!-- Home Button Bar -->
+    <Button
+        android:id="@+id/homeButton"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:text="@string/back_to_home"
+        android:textSize="18sp"
+        android:textAllCaps="false"
+        android:drawableStart="@drawable/ic_home"
+        android:drawablePadding="12dp"
+        android:backgroundTint="#1A1A1A"
+        android:textColor="#FFFFFF"
+        android:gravity="center"
+        android:elevation="8dp"
+        android:visibility="gone" />
+
+</LinearLayout>

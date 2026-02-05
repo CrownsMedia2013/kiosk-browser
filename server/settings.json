@@ -1,0 +1,51 @@
+{
+  "start_url": "https://www.crowns-media.com/displays/display001",
+  "home_url": "https://www.crowns-media.com/displays/display001",
+  "background_image": "./images/Hintergrund.jpg",
+  "allowed_urls": [
+    "https://www.zukunftswerkstatt-gellersen.de",
+    "https://kirschendorf.de",
+    "https://www.aerzen.de",
+    "https://www.hameln-pyrmont.de",
+    "https://www.wetteronline.de",
+    "https://www.wetterdienst.de",
+    "https://m.wetterdienst.de/Wetter/Gellersen_Aerzen/"
+  ],
+  "admin_pin": "1234",
+  "header": {
+    "title": "HERZLICH WILLKOMMEN IM KIRSCHENDORF GELLERSEN.",
+    "subtitle": "Tippen Sie an und entdecken Sie aktuelle Termine und hilfreiche Online-Angebote rund um unser schönes Dorf Gellersen."
+  },
+  "tiles": [
+    {
+      "title": "Schwarzes Brett (Termine)",
+      "url": "https://www.zukunftswerkstatt-gellersen.de/veranstaltungen",
+      "background": "./images/Termine.jpg"
+    },
+    {
+      "title": "Schützenverein Gellersen",
+      "url": "https://kirschendorf.de",
+      "background": "./images/Schuetzenverein.jpg"
+    },
+    {
+      "title": "Zukunftswerkstatt Gellersen",
+      "url": "https://www.zukunftswerkstatt-gellersen.de",
+      "background": "./images/Zukunftswerkstatt.jpg"
+    },
+    {
+      "title": "Flecken Aerzen",
+      "url": "https://www.aerzen.de",
+      "background": "./images/FleckenAerzen.jpg"
+    },
+    {
+      "title": "Landkreis Hameln-Pyrmont",
+      "url": "https://www.hameln-pyrmont.de",
+      "background": "./images/Landkreis.jpg"
+    },
+    {
+      "title": "Wetter",
+      "url": "https://www.wetterdienst.de/Deutschlandwetter/Gellersen_Aerzen/",
+      "background": "./images/Wetter.jpg"
+    }
+  ]
+}

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kiosk Einstellungen"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Start URL -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Start-URL (Auto-Start &amp; Inaktivität):"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/startUrlInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="z.B. crowns-media.com/termine"
+            android:inputType="textUri"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Home URL -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Home-URL (Grid/Hauptmenü):"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/homeUrlInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="z.B. crowns-media.com/index.php"
+            android:inputType="textUri"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Erlaubte URLs -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Erlaubte URLs (eine pro Zeile):"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/allowedUrlsInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="z.B. crowns-media.com"
+            android:inputType="textMultiLine"
+            android:minLines="3"
+            android:gravity="top"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Admin PIN -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Admin-PIN:"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/adminPinInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Mindestens 4 Zeichen"
+            android:inputType="numberPassword"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PIN wiederholen:"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/adminPinConfirmInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="PIN bestätigen"
+            android:inputType="numberPassword"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Server Einstellungen -->
+        <Switch
+            android:id="@+id/loadFromServerSwitch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Einstellungen vom Server laden"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/serverUrlInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Server-URL für settings.json"
+            android:inputType="textUri"
+            android:enabled="false"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Speichern Button -->
+        <Button
+            android:id="@+id/saveButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Speichern &amp; Kiosk starten"
+            android:textStyle="bold"
+            android:layout_marginBottom="16dp" />
+
+        <!-- App Verlassen Button -->
+        <Button
+            android:id="@+id/exitAppButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🚪 App verlassen"
+            android:backgroundTint="#2196F3"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Device Owner Entfernen -->
+        <Button
+            android:id="@+id/removeDeviceOwnerButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Device Owner entfernen"
+            android:backgroundTint="#FF5722"
+            android:layout_marginBottom="8dp" />
+
+    </LinearLayout>
+</ScrollView>

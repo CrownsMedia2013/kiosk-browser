@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Kiosk Browser</string>
+    <string name="home_button">Zur Startseite</string>
+    <string name="back_to_home">← Zurück zum Hauptmenü</string>
+
+    <!-- Settings Labels -->
+    <string name="load_from_server_label">Einstellungen vom Server laden</string>
+    <string name="server_url_label">Server-URL</string>
+    <string name="server_url_hint">z. B. https://example.com/</string>
+    <string name="start_url_label">Start-URL</string>
+    <string name="start_url_hint">z. B. https://example.com/start</string>
+    <string name="allowed_urls_label">Erlaubte URLs (eine pro Zeile)</string>
+    <string name="allowed_urls_hint">z. B.\nhttps://example.com/\nhttps://example.org/</string>
+    <string name="admin_pin_label">Admin-PIN</string>
+    <string name="admin_pin_hint">Nur Zahlen, z. B. 1234</string>
+    <string name="admin_pin_repeat_label">Admin-PIN wiederholen</string>
+    <string name="admin_pin_repeat_hint">Zur Bestätigung erneut eingeben</string>
+    <string name="save_button">Speichern</string>
+</resources>
